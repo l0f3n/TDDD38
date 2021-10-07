@@ -3,15 +3,30 @@
 #include <stdexcept>
 #include <ostream>
 
-/* Implement Expression here */
+Expression::Expression(Node* root) : root{root} {}
+
+Expression::~Expression() {
+	delete root;
+}
+
+double Expression::evaluate() const {
+	return root->evaluate();
+}
+
+void Expression::print_tree(std::ostream& os) const {
+	root->print_tree(os, 0);
+}
 
 /* For part B */
-void print(std::ostream& os) const
+
+void Expression::print(std::ostream& os) const
 {
     throw std::invalid_argument{"--print is unimplemented"};
 }
 
+
 /* For part C */
+
 void Expression::expand()
 {
     throw std::invalid_argument{"--expand is unimplemented"};
