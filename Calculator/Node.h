@@ -28,7 +28,7 @@ class Node {
 	public:
 		virtual ~Node() = 0;
 		virtual double evaluate() const = 0;
-//		virtual void print(std::ostream& os) = 0;
+		virtual void print(std::ostream& os) const = 0;
 		virtual void print_tree(std::ostream& os, int depth) const = 0;
 		virtual Node* clone() const = 0;
 };
@@ -38,6 +38,7 @@ class Number : public Node {
 		Number(double value);
 		~Number() override = default;
 		double evaluate() const override;
+		void print(std::ostream& os) const;
 		void print_tree(std::ostream& os, int depth) const override;
 		Number* clone() const override;
 	private:
@@ -50,7 +51,8 @@ class Operator : public Node {
 		~Operator() override;
 
 	protected:
-		void print_helper(std::ostream& os, int depth, char op) const;
+		void print_helper(std::ostream& os, bool parenthesis, char op) const;
+		void print_tree_helper(std::ostream& os, int depth, char op) const;
 		Node *lhs, *rhs;
 };
 
@@ -58,14 +60,16 @@ class Addition : public Operator {
 	public:
 		Addition(Node* lhs, Node* rhs);
 		double evaluate() const override;
+		void print(std::ostream& os) const override;
 		void print_tree(std::ostream& os, int depth) const override;
 		Addition* clone() const override;
 };
 
-class Subtraction : public Operator {
+class Subtraction : public Addition {
 	public:
 		Subtraction(Node* lhs, Node* rhs);
 		double evaluate() const override;
+		void print(std::ostream& os) const override;
 		void print_tree(std::ostream& os, int depth) const override;
 		Subtraction* clone() const override;
 };
@@ -74,14 +78,16 @@ class Multiplication : public Operator {
 	public:
 		Multiplication(Node* lhs, Node* rhs);
 		double evaluate() const override;
+		void print(std::ostream& os) const override;
 		void print_tree(std::ostream& os, int depth) const override;
 		Multiplication* clone() const override;
 };
 
-class Division : public Operator {
+class Division : public Multiplication {
 	public:
 		Division(Node* lhs, Node* rhs);
 		double evaluate() const override;
+		void print(std::ostream& os) const override;
 		void print_tree(std::ostream& os, int depth) const override;
 		Division* clone() const override;
 };

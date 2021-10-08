@@ -21,7 +21,7 @@ void Expression::print_tree(std::ostream& os) const {
 
 void Expression::print(std::ostream& os) const
 {
-    throw std::invalid_argument{"--print is unimplemented"};
+    root->print(os);
 }
 
 
