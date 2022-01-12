@@ -1,0 +1,17 @@
+(a):
+    - delete x.ptr will delete the memory the pointer points but when the 
+    main function finishes x will destruct and it will also delete that pointer.
+    It will try to free the same memory twice.
+
+(b):
+    - if constexpr is evaluated at compile time while if is evaluated at run-time.
+
+(c):
+    - you can't?
+
+(d):
+    - 
+
+(e):
+    - A union stores all it's members in the same space, meaning that the same
+    data can be accessed as difference types and in different ways.
