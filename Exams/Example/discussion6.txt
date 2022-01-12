@@ -1,0 +1,10 @@
+a)
+
+When we multiple the values in the end we turn a 1-dimensional array into 0 dimensions (a single value).
+This is exactly what reduce and accumulate does.
+Reduce is faster as I understand, because it doesn't need to do it in order and multiplication commutes.
+
+We rotate the values in the denominator to line them up with the ones in factor, which the function (so aptly named) rotate does.
+
+b)
+

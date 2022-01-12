@@ -1,0 +1,17 @@
+What was used to solve the problem was dynamic inheritance / dynamic dispatch.
+Another way would be to use static inhertiance with variadic templates.
+
+Scalability: 
+This solution is slower compared to other solutions at run-time due to the indirection introduced by the vtable.
+Using static inheritance (mixins using templates) would have been faster at run-time.
+
+It is relatively quick to compile as compared to using static inheritance with templates.
+
+It is also not really flexible since combining 
+
+Readability: 
+It is rather easy to read since it is a very common programming pattern.
+Using static inheritance is a lot more difficult to understand if you are not familiar with variadic templates.
+
+Usability: 
+It is easy to forget to type virtual before functions in the base classes, especially implementing a virtual destructor.
